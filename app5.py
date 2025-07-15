@@ -5,7 +5,8 @@ import torchaudio as ta
 from chatterbox.tts import ChatterboxTTS  # Fixed import
 import numpy as np
 from openai import OpenAI
-openai_client = OpenAI(api_key="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")
+
+openai_client = OpenAI(api_key="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")
 @st.cache_resource
 def load_model():
     return ChatterboxTTS.from_pretrained(device="cpu")
