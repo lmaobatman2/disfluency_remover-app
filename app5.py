@@ -6,8 +6,7 @@ from chatterbox.tts import ChatterboxTTS  # Fixed import
 import numpy as np
 from openai import OpenAI
 
-openai_client = OpenAI(api_key="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")
-@st.cache_resource
+openai_client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 def load_model():
     return ChatterboxTTS.from_pretrained(device="cpu")
 
@@ -23,7 +22,7 @@ uploaded_file = st.file_uploader(
 )
 
 # AssemblyAI setup
-aai.settings.api_key = "b1c7e06a29bb4b72b63334e575b1e429"
+aai.settings.api_key = st.secrets["ASSEMBLYAI_API_KEY"]
 transcriber = aai.Transcriber()
 config = aai.TranscriptionConfig(speech_model=aai.SpeechModel.slam_1)
 
